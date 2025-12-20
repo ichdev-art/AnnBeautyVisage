@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnnBeautyVisage | Extensions de Cils & Beauté</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4af37; /* Or antique */
+            --bg-color: #faf9f6; /* Blanc cassé / Coquille d'oeuf */
+            --secondary-bg: #fdf5f5; /* Rose poudré très léger */
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            font-weight: 400;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .btn-reserve {
+            padding: 10px 25px;
+            background-color: var(--text-dark);
+            color: white;
+            border: 1px solid var(--text-dark);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .btn-reserve:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1587614203976-365c74645e83?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .btn-hero {
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            background-color: #b5952f;
+            transform: translateY(-3px);
+        }
+
+        /* --- PRESTATIONS --- */
+        .services {
+            padding: 80px 10%;
+            text-align: center;
+            background-color: white;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            padding: 40px;
+            background: var(--secondary-bg);
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-family: var(--font-title);
+        }
+
+        /* --- LE SALON (STUDIO) --- */
+        .studio {
+            padding: 80px 10%;
+            background-color: var(--bg-color);
+        }
+
+        .studio-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .studio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .studio-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .studio-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            min-width: 300px;
+        }
+
+        .studio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .img-tall {
+            grid-row: span 2;
+            height: 515px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplifié pour l'exemple */
+            .studio-content { flex-direction: column; }
+        }
+        /* --- STYLE DE LA MODALE (POP-UP) --- */
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            z-index: 2000; /* Au-dessus de tout */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7); /* Fond sombre transparent */
+            backdrop-filter: blur(5px); /* Petit effet de flou moderne */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 40px;
+            border: 1px solid var(--primary-color);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto; /* Permet de scroller si le texte est long */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close-btn:hover { color: var(--text-dark); }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .modal-content p {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            color: #555;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AnnBeautyVisage</div>
+        <div class="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#prestations">Prestations</a>
+            <a href="#studio">Le Studio</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="https://www.fresha.com/book-now/annbeauty-visage-bg9zi3de/all-offer?share=true&pId=2723277" class="btn-reserve">Prendre RDV</a>
+    </nav>
+
+    <section class="hero" id="accueil">
+        <h1>Sublimez votre regard</h1>
+        <p>L'excellence de l'extension de cils dans un écrin de douceur.</p>
+        <a href="https://www.fresha.com/book-now/annbeauty-visage-bg9zi3de/all-offer?share=true&pId=2723277" class="btn-hero">Réserver mon soin</a>
+    </section>
+
+    <section class="services" id="prestations">
+        <span class="section-subtitle">Notre Carte</span>
+        <h2 class="section-title">Nos Prestations</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Pose Cil à Cil</h3>
+                <span class="price">75€</span>
+                <p>Un résultat naturel pour intensifier votre regard sans effet artificiel. Idéal pour une première pose.</p>
+            </div>
+            <div class="service-card">
+                <h3>Volume Russe</h3>
+                <span class="price">95€</span>
+                <p>Pour un regard intense et glamour. Des bouquets faits main pour un volume sur-mesure.</p>
+            </div>
+            <div class="service-card">
+                <h3>Rehaussement & Tint</h3>
+                <span class="price">55€</span>
+                <p>Courbez et teintez vos cils naturels pour un effet mascara durable (6 à 8 semaines).</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="studio" id="studio">
+        <div class="studio-content">
+            <div class="studio-images">
+                <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80" alt="Salon détail" class="studio-img img-tall">
+                <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=800&q=80" alt="Ambiance" class="studio-img">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Produits" class="studio-img">
+            </div>
+            <div class="studio-text">
+                <span class="section-subtitle">L'Endroit</span>
+                <h2 class="section-title">Une parenthèse de bien-être</h2>
+                <p>Bienvenue dans notre cocon privé. Nous avons imaginé cet espace comme un lieu de déconnexion totale. Musique douce, lumières tamisées et confort absolu.</p>
+                <p>Chaque prestation est réalisée sur un matelas à mémoire de forme pour vous garantir une relaxation optimale pendant votre mise en beauté.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-info">
+            <div class="footer-col">
+                <h4>AnnBeautyVisage</h4>
+                <p>L'art du cil avec passion et précision.</p>
+                <div class="social-links" style="margin-top: 15px;">
+                    <a href="https://www.instagram.com/annbeautyvisage" target="_blank">Instagram</a> | 
+                    <a href="https://www.snapchat.com/add/annbeautyvisage" target="_blank">Snapchat</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Nous trouver</h4>
+                <p>16 rue des sports<br>76620 Le Havre</p>
+                <p>06 58 72 02 08</p>
+                <p>annbeautyvisage@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Horaires</h4>
+                <p>Lun - Sam : 9h - 18h</p>
+                <p>Dim : Fermé</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 AnnBeautyVisage. Tous droits réservés. 
+            | <a href="#" id="openModalBtn" style="text-decoration: underline; cursor: pointer;">Mentions Légales</a>
+        </div>
+    </footer>
+
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Mentions Légales</h2>
+            
+            <p><strong>1. Éditeur du site</strong><br>
+            Le site est édité par <strong>Khantouche Anissa</strong> (AnnBeautyVisage), situé au 16 Rue des sports, 76620 Le Havre.<br>
+            Immatriculée sous le numéro <strong>SIRET 89252092500017</strong>.<br>
+            Directeur de la publication : Khantouche Anissa.</p>
+            
+            <p><strong>2. Contact</strong><br>
+            Email : annbeautyvisage@gmail.com<br>
+            Téléphone : 06 58 72 02 08</p>
+
+            <p><strong>3. Hébergement</strong><br>
+            Le site est hébergé par Netlify, Inc., 2325 3rd Street, Suite 215, San Francisco, California 94107, USA.</p>
+
+            <p><strong>4. Propriété intellectuelle</strong><br>
+            L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.</p>
+            
+            <p><strong>5. Données personnelles</strong><br>
+            Les informations recueillies lors de la prise de rendez-vous sont gérées par la plateforme Fresha et sont soumises à leur politique de confidentialité.</p>
+        </div>
+    </div>
+
+    <script>
+        // Effet de défilement doux pour les liens
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Gestion de la Modale Mentions Légales
+        const modal = document.getElementById("legalModal");
+        const btn = document.getElementById("openModalBtn");
+        const span = document.getElementsByClassName("close-btn")[0];
+
+        // Quand on clique sur le lien, ça ouvre
+        btn.onclick = function(e) {
+            e.preventDefault(); // Empêche de remonter en haut de page
+            modal.style.display = "block";
+        }
+
+        // Quand on clique sur la croix, ça ferme
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quand on clique en dehors de la boîte, ça ferme aussi
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
