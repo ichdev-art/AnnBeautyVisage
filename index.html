@@ -99,6 +99,7 @@
             align-items: center;
             text-align: center;
             color: white;
+            padding: 0 20px;
         }
 
         .hero h1 {
@@ -111,6 +112,7 @@
             font-weight: 300;
             margin-bottom: 40px;
             letter-spacing: 1px;
+            max-width: 800px;
         }
 
         .btn-hero {
@@ -147,22 +149,44 @@
             color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             display: block;
             font-size: 0.9rem;
+        }
+
+        /* NOUVEAU STYLE POUR LES CATEGORIES */
+        .category-wrapper {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            display: inline-block;
+            padding-bottom: 10px;
+            font-family: var(--font-title);
+        }
+
+        .category-desc {
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-style: italic;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .service-card {
-            padding: 40px;
+            padding: 30px;
             background: var(--secondary-bg);
             transition: 0.3s;
             border: 1px solid transparent;
+            text-align: left; /* Meilleure lecture pour les listes */
         }
 
         .service-card:hover {
@@ -170,17 +194,41 @@
             transform: translateY(-5px);
         }
 
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 10px;
+        }
+
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: var(--text-dark);
         }
 
         .price {
-            display: block;
             font-size: 1.2rem;
             color: var(--primary-color);
-            margin-bottom: 20px;
             font-family: var(--font-title);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Carte Info Spéciale */
+        .info-card {
+            background-color: #fff;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .info-card .service-header {
+            justify-content: center;
+            border: none;
         }
 
         /* --- LE SALON (STUDIO) --- */
@@ -265,20 +313,21 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Simplifié pour l'exemple */
+            .nav-links { display: none; }
             .studio-content { flex-direction: column; }
         }
+
         /* --- STYLE DE LA MODALE (POP-UP) --- */
         .modal {
-            display: none; /* Caché par défaut */
+            display: none;
             position: fixed;
-            z-index: 2000; /* Au-dessus de tout */
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7); /* Fond sombre transparent */
-            backdrop-filter: blur(5px); /* Petit effet de flou moderne */
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
@@ -290,7 +339,7 @@
             max-width: 600px;
             position: relative;
             max-height: 80vh;
-            overflow-y: auto; /* Permet de scroller si le texte est long */
+            overflow-y: auto;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
@@ -335,7 +384,7 @@
 
     <section class="hero" id="accueil">
         <h1>Sublimez votre regard</h1>
-        <p>L'excellence de l'extension de cils dans un écrin de douceur.</p>
+        <p>Expertise et passion au service de votre beauté. Du volume russe glamour au browlift tendance, nous sublimons chaque regard avec une précision sur-mesure. Laissez-vous chouchouter dans notre cocon et révélez la meilleure version de vous-même.</p>
         <a href="https://www.fresha.com/book-now/annbeauty-visage-bg9zi3de/all-offer?share=true&pId=2723277" class="btn-hero">Réserver mon soin</a>
     </section>
 
@@ -343,23 +392,105 @@
         <span class="section-subtitle">Notre Carte</span>
         <h2 class="section-title">Nos Prestations</h2>
         
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Pose Cil à Cil</h3>
-                <span class="price">75€</span>
-                <p>Un résultat naturel pour intensifier votre regard sans effet artificiel. Idéal pour une première pose.</p>
-            </div>
-            <div class="service-card">
-                <h3>Volume Russe</h3>
-                <span class="price">95€</span>
-                <p>Pour un regard intense et glamour. Des bouquets faits main pour un volume sur-mesure.</p>
-            </div>
-            <div class="service-card">
-                <h3>Rehaussement & Tint</h3>
-                <span class="price">55€</span>
-                <p>Courbez et teintez vos cils naturels pour un effet mascara durable (6 à 8 semaines).</p>
+        <div class="category-wrapper">
+            <h3 class="category-header">✨ Extensions de Cils</h3>
+            <p class="category-desc">Sublimez votre regard avec la technique adaptée à vos envies.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Cil à Cil</h3>
+                        <span class="price">30€</span>
+                    </div>
+                    <p>L'élégance au naturel : une extension posée sur chaque cil pour un effet longueur "mascara" sans surcharge.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Pose Mixte</h3>
+                        <span class="price">40€</span>
+                    </div>
+                    <p>Le parfait équilibre : un mélange de cil à cil et de bouquets pour un regard plus texturisé et un volume léger.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Volume Russe</h3>
+                        <span class="price">50€</span>
+                    </div>
+                    <p>Le glamour absolu : des bouquets multiples pour un maximum de densité et un regard intense et sophistiqué.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Dépose</h3>
+                        <span class="price">10€</span>
+                    </div>
+                    <p>Le retrait soigné : dissolution des points de colle en douceur pour préserver la santé de vos cils naturels.</p>
+                </div>
             </div>
         </div>
+
+        <div class="category-wrapper">
+            <h3 class="category-header">👁️ Embellissement du Regard</h3>
+            <p class="category-desc">Mettez en valeur vos atouts naturels.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Réhaussement</h3>
+                        <span class="price">20€</span>
+                    </div>
+                    <p>La courbure parfaite : recourbe vos cils dès la racine pour ouvrir le regard sans ajout de matière.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Teinture</h3>
+                        <span class="price">5€</span>
+                    </div>
+                    <p>La profondeur immédiate : intensifie la couleur des poils pour un effet maquillé et un regard plus présent.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Browlift</h3>
+                        <span class="price">20€</span>
+                    </div>
+                    <p>La tendance "sourcils fournis" : lifte et discipline les poils vers le haut pour des sourcils plus épais et structurés.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Restructuration</h3>
+                        <span class="price">5€</span>
+                    </div>
+                    <p>L'architecture du visage : redéfinition précise de la ligne de vos sourcils pour harmoniser vos traits.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3>Mascara Semi-Permanent</h3>
+                        <span class="price">20€</span>
+                    </div>
+                    <p>La liberté au quotidien : des cils noirs, gainés et courbés durablement, pour oublier le maquillage le matin.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-wrapper">
+            <h3 class="category-header">ℹ️ Infos Pratiques</h3>
+            <div class="services-grid" style="justify-content: center;">
+                <div class="service-card info-card">
+                    <div class="service-header">
+                        <h3>Dépose Extérieure</h3>
+                    </div>
+                    <span class="price" style="display:block; margin-bottom:10px;">10€</span>
+                    <p>Tarif applicable pour le retrait d'une pose effectuée dans un autre institut sans repose derrière.</p>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section class="studio" id="studio">
